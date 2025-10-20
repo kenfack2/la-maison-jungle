@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { ShoppingCart, Leaf, BarChart3, Users, ChevronLeft, ChevronRight, Target, Globe, Heart, Shield } from "lucide-react";
 
 export default function DashboardAccueil() {
+  // URL de base pour les images
+  const baseUrl = process.env.PUBLIC_URL || '';
+
   // Références pour les animations
   const statsSectionRef = useRef(null);
   const carouselSectionRef = useRef(null);
@@ -10,14 +13,14 @@ export default function DashboardAccueil() {
   // État pour le carousel des plantes
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Images de plantes pour le carousel - CHEMINS RELATIFS CORRIGÉS
+  // Images de plantes pour le carousel - CHEMINS CORRIGÉS
   const plantImages = [
-    "./images/plantes/plante1.jpg",
-    "./images/plantes/plante2.jpg",
-    "./images/plantes/plante3.jpg",
-    "./images/plantes/plante4.jpg",
-    "./images/plantes/plante5.jpg",
-    "./images/plantes/plante6.jpg"
+    `${baseUrl}/images/plantes/plante1.jpg`,
+    `${baseUrl}/images/plantes/plante2.jpg`,
+    `${baseUrl}/images/plantes/plante3.jpg`,
+    `${baseUrl}/images/plantes/plante4.jpg`,
+    `${baseUrl}/images/plantes/plante5.jpg`,
+    `${baseUrl}/images/plantes/plante6.jpg`
   ];
 
   // Noms des plantes
@@ -151,6 +154,9 @@ export default function DashboardAccueil() {
 
   const visibleImages = getVisibleImages();
 
+  // Fallback SVG pour les images qui ne chargent pas
+  const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%234ade80'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='white'%3E🌱%3C/text%3E%3C/svg%3E";
+
   return (
     <div className="min-h-screen bg-green-50">
       {/* En-tête avec z-index réduit pour laisser passer le menu */}
@@ -244,8 +250,7 @@ export default function DashboardAccueil() {
                           alt={image.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            // Fallback si l'image ne charge pas
-                            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%234ade80'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3E🌱%3C/text%3E%3C/svg%3E";
+                            e.target.src = fallbackSvg;
                           }}
                         />
 
