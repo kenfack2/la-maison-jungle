@@ -35,6 +35,15 @@ jobs:
     - name: Build project
       run: npm run build
 
+    # Optionnel : exécuter les tests seulement si le script existe
+    - name: Run tests if available
+      run: |
+        if npm run | grep -q " test"; then
+          npm test -- --watchAll=false
+        else
+          echo "No test script found, skipping tests"
+        fi
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
@@ -42,9 +51,6 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: ./dist
-
-    - name: Run tests (optionnel)
-      run: npm test -- --watchAll=false
 
   deploy:
     environment:
