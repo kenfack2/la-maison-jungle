@@ -10,14 +10,14 @@ export default function DashboardAccueil() {
   // État pour le carousel des plantes
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Images de plantes pour le carousel
+  // Images de plantes pour le carousel - CHEMINS RELATIFS CORRIGÉS
   const plantImages = [
-    "/images/plantes/plante1.jpg",
-    "/images/plantes/plante2.jpg",
-    "/images/plantes/plante3.jpg",
-    "/images/plantes/plante4.jpg",
-    "/images/plantes/plante5.jpg",
-    "/images/plantes/plante6.jpg"
+    "./images/plantes/plante1.jpg",
+    "./images/plantes/plante2.jpg",
+    "./images/plantes/plante3.jpg",
+    "./images/plantes/plante4.jpg",
+    "./images/plantes/plante5.jpg",
+    "./images/plantes/plante6.jpg"
   ];
 
   // Noms des plantes
@@ -243,6 +243,10 @@ export default function DashboardAccueil() {
                           src={image.src}
                           alt={image.name}
                           className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback si l'image ne charge pas
+                            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%234ade80'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3E🌱%3C/text%3E%3C/svg%3E";
+                          }}
                         />
 
                         {/* Overlay pour l'image centrale */}
