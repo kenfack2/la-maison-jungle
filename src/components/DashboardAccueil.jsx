@@ -4,15 +4,13 @@ import { ShoppingCart, Leaf, BarChart3, Users, ChevronLeft, ChevronRight, Target
 export default function DashboardAccueil() {
   // URLs absolues depuis GitHub - SOLUTION DÉFINITIVE
   const repoName = "la-maison-jungle";
-  const baseRawUrl = `https://raw.githubusercontent.com/kenfack2/${repoName}/main/public`;
-
   const plantImages = [
-    `${baseRawUrl}/images/plantes/plante1.jpg`,
-    `${baseRawUrl}/images/plantes/plante2.jpg`,
-    `${baseRawUrl}/images/plantes/plante3.jpg`,
-    `${baseRawUrl}/images/plantes/plante4.jpg`,
-    `${baseRawUrl}/images/plantes/plante5.jpg`,
-    `${baseRawUrl}/images/plantes/plante6.jpg`
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante1.jpg",
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante2.jpg",
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante3.jpg",
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante4.jpg",
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante5.jpg",
+    "https://raw.githubusercontent.com/kenfack2/la-maison-jungle/main/public/images/plantes/plante6.jpg"
   ];
 
   // Références pour les animations
