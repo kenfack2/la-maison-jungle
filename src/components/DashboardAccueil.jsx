@@ -12,12 +12,12 @@ export default function DashboardAccueil() {
 
   // Images de plantes pour le carousel
   const plantImages = [
-    "/images/plantes/plante1.jpg",
-    "/images/plantes/plante2.jpg",
-    "/images/plantes/plante3.jpg",
-    "/images/plantes/plante4.jpg",
-    "/images/plantes/plante5.jpg",
-    "/images/plantes/plante6.jpg"
+    "./images/plantes/plante1.jpg",
+    "./images/plantes/plante2.jpg",
+    "./images/plantes/plante3.jpg",
+    "./images/plantes/plante4.jpg",
+    "./images/plantes/plante5.jpg",
+    "./images/plantes/plante6.jpg"
   ];
 
   // Noms des plantes
