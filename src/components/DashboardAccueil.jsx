@@ -2,8 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { ShoppingCart, Leaf, BarChart3, Users, ChevronLeft, ChevronRight, Target, Globe, Heart, Shield } from "lucide-react";
 
 export default function DashboardAccueil() {
-  // URL de base pour les images
-  const baseUrl = process.env.PUBLIC_URL || '';
+  // URLs absolues depuis GitHub - SOLUTION DÉFINITIVE
+  const repoName = "la-maison-jungle";
+  const baseRawUrl = `https://raw.githubusercontent.com/kenfack2/${repoName}/main/public`;
+
+  const plantImages = [
+    `${baseRawUrl}/images/plantes/plante1.jpg`,
+    `${baseRawUrl}/images/plantes/plante2.jpg`,
+    `${baseRawUrl}/images/plantes/plante3.jpg`,
+    `${baseRawUrl}/images/plantes/plante4.jpg`,
+    `${baseRawUrl}/images/plantes/plante5.jpg`,
+    `${baseRawUrl}/images/plantes/plante6.jpg`
+  ];
 
   // Références pour les animations
   const statsSectionRef = useRef(null);
@@ -12,16 +22,6 @@ export default function DashboardAccueil() {
 
   // État pour le carousel des plantes
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Images de plantes pour le carousel - CHEMINS CORRIGÉS
-  const plantImages = [
-    `${baseUrl}/images/plantes/plante1.jpg`,
-    `${baseUrl}/images/plantes/plante2.jpg`,
-    `${baseUrl}/images/plantes/plante3.jpg`,
-    `${baseUrl}/images/plantes/plante4.jpg`,
-    `${baseUrl}/images/plantes/plante5.jpg`,
-    `${baseUrl}/images/plantes/plante6.jpg`
-  ];
 
   // Noms des plantes
   const plantNames = [
@@ -250,8 +250,10 @@ export default function DashboardAccueil() {
                           alt={image.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {
+                            console.log("Image failed to load:", image.src);
                             e.target.src = fallbackSvg;
                           }}
+                          onLoad={() => console.log("Image loaded successfully:", image.src)}
                         />
 
                         {/* Overlay pour l'image centrale */}
